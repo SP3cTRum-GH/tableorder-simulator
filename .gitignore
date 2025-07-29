@@ -1,0 +1,22 @@
+# IDE 설정 파일
+.idea/
+.vscode/
+
+# 빌드 결과물
+/build/
+/dist/
+*.class
+*.o
+
+# 로그 및 캐시
+*.log
+*.tmp
+
+# OS 생성 파일
+.DS_Store
+Thumbs.db
+
+# 환경 설정 및 비밀 정보
+*.env
+*.properties
+config/secrets.yml
