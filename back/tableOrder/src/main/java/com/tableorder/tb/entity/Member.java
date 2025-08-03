@@ -16,11 +16,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@SequenceGenerator(name = "member_seq_gen", sequenceName = "member_seq", initialValue = 1, allocationSize = 1)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@SequenceGenerator(name = "member_seq_gen", sequenceName = "member_seq", allocationSize = 1)
 public class Member {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_gen")
 	private Long memberNo;
@@ -37,6 +46,9 @@ public class Member {
 	private MemberRole memberRole;
 
 	private LocalDateTime createdAt;
+
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<TableEntity> tables = new ArrayList<>();
 
 	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<MenuCategory> categories = new ArrayList<>();

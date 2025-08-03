@@ -20,3 +20,9 @@ Thumbs.db
 *.env
 *.properties
 config/secrets.yml
+
+# 이미지 파일
+images/
+
+# 리액트 모듈
+node_modules/
